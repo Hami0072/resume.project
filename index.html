@@ -1,144 +1,151 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>رزومه من</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- لینک Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #d8f3dc;
-      color: #000000;
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Arial', 'sans-serif'] },
+          colors: {
+            pistachio: '#d8f3dc',   // سبز پسته‌ای
+            primary: '#0ea5e9',
+            accent: '#f59e0b',
+          }
+        }
+      },
+      darkMode: 'class'
     }
-  </style>
+  </script>
 </head>
-<body>
+<body class="font-sans bg-pistachio text-gray-900">
 
 <!-- نوار بالا -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">رزومه من</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">خانه</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">مهارت‌ها</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">تماس با من</a></li>
-      </ul>
-    </div>
-  </div>
+<nav class="bg-gray-900 text-white px-6 py-3 flex items-center justify-between">
+  <a href="#" class="text-lg font-bold">رزومه من</a>
+  <ul class="flex gap-4 text-sm">
+    <li><a href="#" class="hover:text-primary">خانه</a></li>
+    <li><a href="#" class="hover:text-primary">مهارت‌ها</a></li>
+    <li><a href="#" class="hover:text-primary">تماس با من</a></li>
+  </ul>
 </nav>
 
 <!-- معرفی -->
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-8">
-      <h1>تارا</h1>
-      <p>دانشجوی مهندسی کامپیوتر | توسعه‌دهنده وب | طراح رابط کاربری</p>
-    </div>
-    <div class="col-md-4">
-      <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle" alt="عکس پروفایل">
-    </div>
+<section class="max-w-5xl mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+  <div class="md:col-span-2">
+    <h1 class="text-3xl font-bold">تارا رضاسلطانی</h1>
+    <p class="mt-2 text-gray-700">دانشجوی مهندسی کامپیوتر | توسعه‌دهنده وب | طراح رابط کاربری</p>
   </div>
-</div>
+  <div class="flex justify-center">
+    <img src="https://via.placeholder.com/150" class="rounded-full border-4 border-primary" alt="عکس پروفایل">
+  </div>
+</section>
 
 <!-- بخش تحصیلات -->
-<div class="container mt-4">
-  <h4>تحصیلات</h4>
-  <ul>
+<section class="max-w-5xl mx-auto mt-8 px-4">
+  <h2 class="text-xl font-semibold">تحصیلات</h2>
+  <ul class="list-disc pr-5 mt-2 text-gray-700">
     <li>دانشجوی کارشناسی مهندسی کامپیوتر - دانشگاه ...</li>
-    <li>سال ورود: ۱۴۰۴</li>
+    <li>سال ورود: 4041</li>
   </ul>
-</div>
+</section>
 
 <!-- دکمه تماس -->
-<div class="text-center mt-4">
-  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">تماس با من</button>
+<div class="text-center mt-8">
+  <button onclick="document.getElementById('contactModal').classList.remove('hidden')"
+          class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/80 transition">
+    تماس با من
+  </button>
 </div>
 
 <!-- Modal تماس -->
-<div class="modal fade" id="contactModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">فرم تماس</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" class="form-control mb-2" placeholder="نام شما">
-        <input type="email" class="form-control mb-2" placeholder="ایمیل شما">
-        <textarea class="form-control" rows="3" placeholder="پیام شما"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-        <button class="btn btn-success">ارسال</button>
-      </div>
+<div id="contactModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center">
+  <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+    <h3 class="text-lg font-semibold mb-4">فرم تماس</h3>
+    <input type="text" class="w-full border rounded-md p-2 mb-2" placeholder="نام شما">
+    <input type="email" class="w-full border rounded-md p-2 mb-2" placeholder="ایمیل شما">
+    <textarea class="w-full border rounded-md p-2 mb-2" rows="3" placeholder="پیام شما"></textarea>
+    <div class="flex justify-end gap-2 mt-4">
+      <button onclick="document.getElementById('contactModal').classList.add('hidden')"
+              class="px-3 py-1 bg-gray-300 rounded-md">بستن</button>
+      <button class="px-3 py-1 bg-green-500 text-white rounded-md">ارسال</button>
     </div>
   </div>
 </div>
 
 <!-- مهارت‌ها -->
-<div class="container mt-4">
-  <h4>سطح مهارت‌ها</h4>
-  <div class="mb-2">HTML</div>
-  <div class="progress mb-3">
-    <div class="progress-bar bg-success" style="width: 90%;">90%</div>
+<section class="max-w-5xl mx-auto mt-8 px-4">
+  <h2 class="text-xl font-semibold">سطح مهارت‌ها</h2>
+  <div class="mt-4">
+    <p class="mb-1">HTML</p>
+    <div class="w-full bg-gray-200 rounded-full h-4">
+      <div class="bg-green-500 h-4 rounded-full text-xs text-white text-center" style="width:90%">90%</div>
+    </div>
   </div>
-  <div class="mb-2">CSS</div>
-  <div class="progress mb-3">
-    <div class="progress-bar bg-info" style="width: 80%;">80%</div>
+  <div class="mt-4">
+    <p class="mb-1">CSS</p>
+    <div class="w-full bg-gray-200 rounded-full h-4">
+      <div class="bg-blue-400 h-4 rounded-full text-xs text-white text-center" style="width:80%">80%</div>
+    </div>
   </div>
-</div>
+  <div class="mt-4">
+    <p class="mb-1">Tailwind CSS</p>
+    <div class="w-full bg-gray-200 rounded-full h-4">
+      <div class="bg-purple-500 h-4 rounded-full text-xs text-white text-center" style="width:75%">75%</div>
+    </div>
+  </div>
+</section>
 
 <!-- کارت‌های مهارت -->
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">HTML</h5>
-          <p class="card-text">تسلط کامل بر ساختار صفحات وب</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">CSS</h5>
-          <p class="card-text">طراحی واکنش‌گرا و زیبا</p>
-        </div>
-      </div>
+<section class="max-w-5xl mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="bg-white border rounded-lg shadow p-4">
+    <h3 class="font-semibold">HTML</h3>
+    <p class="text-gray-700 mt-2">تسلط کامل بر ساختار صفحات وب</p>
+  </div>
+  <div class="bg-white border rounded-lg shadow p-4">
+    <h3 class="font-semibold">CSS</h3>
+    <p class="text-gray-700 mt-2">طراحی واکنش‌گرا و زیبا</p>
+  </div>
+  <div class="bg-white border rounded-lg shadow p-4">
+    <h3 class="font-semibold">Tailwind CSS</h3>
+    <p class="text-gray-700 mt-2">استفاده از کلاس‌های آماده برای طراحی سریع و مدرن</p>
+  </div>
+</section>
+
+<!-- اسلایدر ساده -->
+<section class="max-w-5xl mx-auto mt-8 px-4">
+  <div class="relative">
+    <img id="slide" src="https://via.placeholder.com/800x300" class="w-full rounded-lg shadow">
+    <div class="absolute inset-0 flex justify-between items-center px-4">
+      <button onclick="prevSlide()" class="bg-black/40 text-white px-2 py-1 rounded">‹</button>
+      <button onclick="nextSlide()" class="bg-black/40 text-white px-2 py-1 rounded">›</button>
     </div>
   </div>
-</div>
+</section>
 
-<!-- اسلایدر -->
-<div class="container mt-4">
-  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="اسلاید ۱">
-      </div>
-      <div class="carousel-item">
-        <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="اسلاید ۲">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-</div>
-
-<!-- اسکریپت Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const slides = [
+    "https://via.placeholder.com/800x300",
+    "https://via.placeholder.com/800x300/ff7f7f",
+  ];
+  let current = 0;
+  function showSlide() {
+    document.getElementById("slide").src = slides[current];
+  }
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide();
+  }
+  function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide();
+  }
+</script>
 
 </body>
 </html>
